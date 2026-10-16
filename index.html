@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Walkthrough</title>
+  <meta name="description" content="Sorts a real estate photo shoot into listing order, sets aside dark, soft and duplicate shots, and renames the files. Runs on your computer. Photos are never uploaded.">
+  <meta name="theme-color" content="#f6f5f2" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#141414" media="(prefers-color-scheme: dark)">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="icon" href="icon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js" defer></script>
+</head>
+<body>
+  <header class="bar">
+    <div class="brand">
+      <svg class="mark" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 11 12 4l9 7v9H3z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path d="M8 20v-5h3M13 15h3v5" fill="none" stroke="currentColor" stroke-width="2"/></svg>
+      <span>Walkthrough</span>
+    </div>
+    <p class="privacy">Runs on this computer. Photos are never uploaded.</p>
+  </header>
+
+  <main>
+    <section id="start" class="start">
+      <div class="intro">
+        <h1>Sort a listing shoot in one pass.</h1>
+        <p class="lede">Drop the photos from a property shoot. Walkthrough puts them in tour order, front of the house first. It sets aside dark, soft and repeated shots, and renames every file for the listing.</p>
+        <ol class="steps">
+          <li><strong>Drop the shoot.</strong> JPEG, PNG or WebP. Up to a few hundred photos.</li>
+          <li><strong>Check the order.</strong> Change a room, move a photo, or put a shot back.</li>
+          <li><strong>Download the zip.</strong> Original files, renamed in order, with a shot list.</li>
+        </ol>
+      </div>
+
+      <label id="drop" class="drop" for="file-input">
+        <input id="file-input" type="file" accept="image/jpeg,image/png,image/webp" multiple>
+        <span class="drop-title">Drop photos here</span>
+        <span class="drop-sub">or <u>choose files</u></span>
+      </label>
+      <p class="sample">No photos to hand? <button id="sample-btn" class="link" type="button">Try it with 14 sample photos</button></p>
+
+      <div id="status" class="status" aria-live="polite" hidden>
+        <p id="status-text"></p>
+        <progress id="status-bar" max="100" value="0"></progress>
+      </div>
+    </section>
+
+    <section id="work" class="work" hidden>
+      <div class="toolbar">
+        <div class="field">
+          <label for="prefix">File name start</label>
+          <input id="prefix" type="text" placeholder="12 Oak Street" autocomplete="off" spellcheck="false">
+        </div>
+        <p id="counts" class="counts" aria-live="polite"></p>
+        <div class="actions">
+          <button id="add-btn" class="btn" type="button">Add photos</button>
+          <button id="resort-btn" class="btn" type="button">Sort again</button>
+          <button id="zip-btn" class="btn primary" type="button">Download zip</button>
+        </div>
+      </div>
+
+      <h2 class="group-title">In the listing <span>Drag to reorder, or use the arrows. The first photo is the cover.</span></h2>
+      <ol id="listing" class="cards"></ol>
+
+      <div id="aside-wrap" hidden>
+        <h2 class="group-title">Set aside <span>Not in the zip. Put a photo back if you want it.</span></h2>
+        <ol id="aside" class="cards aside"></ol>
+      </div>
+
+      <p class="restart"><button id="clear-btn" class="link" type="button">Start a new shoot</button></p>
+    </section>
+  </main>
+
+  <footer class="foot">
+    <p>Room types come from <a href="https://huggingface.co/Xenova/clip-vit-base-patch32">CLIP ViT-B/32</a>, an open-weight model, running in this tab with <a href="https://github.com/huggingface/transformers.js">Transformers.js</a>. The model downloads once (90 to 180 MB, depending on your computer) and then works offline. <span id="engine"></span> <a href="https://github.com/Prateekiiitg56/walkthrough">Source code</a>.</p>
+  </footer>
+
+  <div id="drop-veil" class="veil" hidden><p>Drop to add photos</p></div>
+
+  <script type="module" src="app.js"></script>
+</body>
+</html>

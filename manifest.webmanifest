@@ -1,0 +1,10 @@
+{
+  "name": "Walkthrough",
+  "short_name": "Walkthrough",
+  "description": "Sorts a real estate photo shoot into listing order, on your computer.",
+  "start_url": "./",
+  "display": "standalone",
+  "background_color": "#f6f5f2",
+  "theme_color": "#f6f5f2",
+  "icons": [{ "src": "icon.svg", "sizes": "any", "type": "image/svg+xml" }]
+}
