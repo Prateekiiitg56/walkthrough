@@ -1,6 +1,6 @@
 // App shell, runtime and zip tool are cached here so the app opens with no connection.
 // Model weights are cached separately by Transformers.js in the "transformers-cache" store.
-const CACHE = 'walkthrough-v1';
+const CACHE = 'walkthrough-v2';
 const SHELL = ['./', './index.html', './styles.css', './app.js', './rooms.js', './room-vectors.json', './manifest.webmanifest', './icon.svg'];
 const CDN = ['cdn.jsdelivr.net', 'cdnjs.cloudflare.com', 'fonts.googleapis.com', 'fonts.gstatic.com'];
 

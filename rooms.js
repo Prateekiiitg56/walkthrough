@@ -83,7 +83,7 @@ export function measure(gray, width, height) {
 }
 
 export const DARK = 0.3;
-export const SOFT = 8;
+export const SOFT = 5;
 export const SAME_SHOT = 0.95;
 
 // Why a photo should stay out of the listing, or null if it is fine.
